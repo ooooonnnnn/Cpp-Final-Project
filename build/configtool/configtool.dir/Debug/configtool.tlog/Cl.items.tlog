@@ -1,0 +1,12 @@
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\Bullshit.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\Bullshit.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigArray.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigArray.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigBool.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigBool.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigData.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigData.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigNumber.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigNumber.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigSection.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigSection.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigString.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\ConfigString.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\configtool.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\configtool.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\IConfigNode.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\IConfigNode.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\IniParser.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\IniParser.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\JsonParser.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\JsonParser.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\stringutils.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\configtool\configtool.dir\Debug\stringutils.obj

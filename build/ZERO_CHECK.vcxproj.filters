@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\omrit\Documents\GitHub\Cpp Final Project\build\CMakeFiles\319695491756ea54d018042457402321\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{07759A6B-41F3-3703-B594-2D6C24F5010E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

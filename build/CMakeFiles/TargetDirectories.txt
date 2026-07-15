@@ -1,0 +1,4 @@
+C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/configtool/CMakeFiles/configtool.dir
+C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/dungeon-crawler/CMakeFiles/dungeon-crawler.dir

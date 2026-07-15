@@ -1,0 +1,10 @@
+^C:\USERS\OMRIT\DOCUMENTS\GITHUB\CPP FINAL PROJECT\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/omrit/Documents/GitHub/Cpp Final Project" "-BC:/Users/omrit/Documents/GitHub/Cpp Final Project/build" --check-stamp-file "C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

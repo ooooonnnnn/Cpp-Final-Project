@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/cmake_install.cmake",
+		"C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/configtool/cmake_install.cmake",
+		"C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/dungeon-crawler/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,10 @@
+^C:\USERS\OMRIT\DOCUMENTS\GITHUB\CPP FINAL PROJECT\BUILD\CMAKEFILES\319695491756EA54D018042457402321\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/omrit/Documents/GitHub/Cpp Final Project" "-BC:/Users/omrit/Documents/GitHub/Cpp Final Project/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/omrit/Documents/GitHub/Cpp Final Project/build/Cpp Final Project.slnx"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
