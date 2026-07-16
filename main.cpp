@@ -1,4 +1,4 @@
-﻿#include "configtool.h"
+﻿#include "configtool\configtool.h"
 
 int main()
 {
