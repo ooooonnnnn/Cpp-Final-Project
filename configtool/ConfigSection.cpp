@@ -1,13 +1,13 @@
-﻿#include "ConfigSection.h"
+#include "ConfigSection.h"
 
 std::string ConfigSection::toString() const
 {
     std::string str;
-    for (const auto& child : children)
+    for (const auto& key : keys)
     {
-        str.append(child.first);
+        str.append(key.first);
         str.append(" : ");
-        str.append(child.second->toString());
+        str.append(key.second->toString());
         str.append("\n");
     }
     return str;

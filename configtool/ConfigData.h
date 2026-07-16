@@ -1,12 +1,12 @@
 #pragma once
 #include <map>
-#include <memory>
 #include <string>
-#include "IConfigNode.h"
+
+#include "ConfigSection.h"
 
 class ConfigData
 {
 public:
-    std::map<std::string, std::unique_ptr<IConfigNode>> nodes;
+    std::map<std::string, ConfigSection> sections;
     std::string toString() const;
 };

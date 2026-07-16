@@ -1,1 +1,11 @@
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigArray.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigArray.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigBool.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigBool.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigData.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigData.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigNumber.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigNumber.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigSection.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigSection.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigString.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\ConfigString.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\configtool.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\configtool.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\IConfigNode.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\IConfigNode.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\IniParser.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\IniParser.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\stringutils.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\stringutils.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\main.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\main.obj

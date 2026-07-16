@@ -1,15 +1,19 @@
-﻿#include "ConfigData.h"
+#include "ConfigData.h"
 
 std::string ConfigData::toString() const
 {
     std::string str;
-    for (auto& node : nodes)
+    for (const auto& section : sections)
     {
-        str.append(node.first);
-        str.append(" : ");
-        str.append(node.second->toString());
-        str.append("\n");   
+        if (!section.first.empty())
+        {
+            str.append("[");
+            str.append(section.first);
+            str.append("]\n");
+        }
+        str.append(section.second.toString());
+        str.append("\n");
     }
-    
+
     return str;
 }
