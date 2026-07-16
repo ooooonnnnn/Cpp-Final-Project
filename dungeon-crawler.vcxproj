@@ -19,7 +19,50 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="configtool\Bullshit.cpp" />
+    <ClCompile Include="configtool\ConfigArray.cpp" />
+    <ClCompile Include="configtool\ConfigBool.cpp" />
+    <ClCompile Include="configtool\ConfigData.cpp" />
+    <ClCompile Include="configtool\ConfigNumber.cpp" />
+    <ClCompile Include="configtool\ConfigSection.cpp" />
+    <ClCompile Include="configtool\ConfigString.cpp" />
+    <ClCompile Include="configtool\configtool.cpp" />
+    <ClCompile Include="configtool\IConfigNode.cpp" />
+    <ClCompile Include="configtool\IniParser.cpp" />
+    <ClCompile Include="configtool\JsonParser.cpp" />
+    <ClCompile Include="configtool\stringutils.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.exe.recipe" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.ilk" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\CL.command.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\Cl.items.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\CL.read.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\CL.write.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\dungeon-crawler.lastbuildstate" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\link.command.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\link.read.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\link.secondary.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\link.write.1.tlog" />
+    <Content Include="dungeon-crawler\x64\Debug\main.obj" />
+    <Content Include="dungeon-crawler\x64\Debug\vc145.idb" />
+    <Content Include="dungeon-crawler\x64\Debug\vc145.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="configtool\Bullshit.h" />
+    <ClInclude Include="configtool\ConfigArray.h" />
+    <ClInclude Include="configtool\ConfigBool.h" />
+    <ClInclude Include="configtool\ConfigData.h" />
+    <ClInclude Include="configtool\ConfigNumber.h" />
+    <ClInclude Include="configtool\ConfigSection.h" />
+    <ClInclude Include="configtool\ConfigString.h" />
+    <ClInclude Include="configtool\configtool.h" />
+    <ClInclude Include="configtool\IConfigNode.h" />
+    <ClInclude Include="configtool\IConfigParser.h" />
+    <ClInclude Include="configtool\IniParser.h" />
+    <ClInclude Include="configtool\JsonParser.h" />
+    <ClInclude Include="configtool\stringutils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
