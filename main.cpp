@@ -52,6 +52,7 @@ void try_move(ConfigData& map, std::string& position, const std::string& directi
     }
     else
     {
+        std::cout << "Moving " << direction << "\n";
         position = next_room;
     }
 }
