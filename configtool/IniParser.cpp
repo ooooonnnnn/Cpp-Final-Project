@@ -2,7 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-#include "ConfigString.h"
 #include "stringutils.h"
 
 static bool is_comment(const std::string& line)
@@ -81,7 +80,7 @@ ConfigData IniParser::parse(const std::string& path)
         {
             std::string key, value;
             parse_key_value(trimmed, &key, &value);
-            data.sections[currentSectionName].keys.emplace(key, std::make_unique<ConfigString>(value));
+            data.sections[currentSectionName].keys.emplace(key, value);
         }
         catch (std::runtime_error& err)
         {
@@ -104,7 +103,7 @@ static void serialize_section(const std::string& sectionName, const ConfigSectio
     for (const auto& key : section.keys)
     {
         file << stringutils::trim_whitespace(key.first) << "=" <<
-            stringutils::trim_whitespace(key.second->toString()) << "\n";
+            stringutils::trim_whitespace(key.second) << "\n";
     }
 }
 

@@ -7,7 +7,7 @@ std::string ConfigSection::toString() const
     {
         str.append(key.first);
         str.append(" : ");
-        str.append(key.second->toString());
+        str.append(key.second);
         str.append("\n");
     }
     return str;

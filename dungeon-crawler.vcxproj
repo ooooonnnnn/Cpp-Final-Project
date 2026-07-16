@@ -19,14 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="configtool\ConfigArray.cpp" />
-    <ClCompile Include="configtool\ConfigBool.cpp" />
     <ClCompile Include="configtool\ConfigData.cpp" />
-    <ClCompile Include="configtool\ConfigNumber.cpp" />
     <ClCompile Include="configtool\ConfigSection.cpp" />
-    <ClCompile Include="configtool\ConfigString.cpp" />
     <ClCompile Include="configtool\configtool.cpp" />
-    <ClCompile Include="configtool\IConfigNode.cpp" />
     <ClCompile Include="configtool\IniParser.cpp" />
     <ClCompile Include="configtool\stringutils.cpp" />
     <ClCompile Include="main.cpp" />
@@ -49,14 +44,9 @@
     <Content Include="dungeon-crawler\x64\Debug\vc145.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="configtool\ConfigArray.h" />
-    <ClInclude Include="configtool\ConfigBool.h" />
     <ClInclude Include="configtool\ConfigData.h" />
-    <ClInclude Include="configtool\ConfigNumber.h" />
     <ClInclude Include="configtool\ConfigSection.h" />
-    <ClInclude Include="configtool\ConfigString.h" />
     <ClInclude Include="configtool\configtool.h" />
-    <ClInclude Include="configtool\IConfigNode.h" />
     <ClInclude Include="configtool\IConfigParser.h" />
     <ClInclude Include="configtool\IniParser.h" />
     <ClInclude Include="configtool\stringutils.h" />

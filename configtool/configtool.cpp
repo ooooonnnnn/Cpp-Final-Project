@@ -6,11 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "ConfigArray.h"
-#include "ConfigBool.h"
-#include "ConfigNumber.h"
 #include "ConfigSection.h"
-#include "ConfigString.h"
 #include "IConfigParser.h"
 #include "IniParser.h"
 
