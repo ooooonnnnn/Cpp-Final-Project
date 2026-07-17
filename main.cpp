@@ -48,7 +48,9 @@ int main()
     bool exit = false;
     while (!exit)
     {
+        //clear console
         display_room_info(map, position);
+        std::cout << inventory.toString() << "\n";
 
         std::string input;
         std::cin >> input;
@@ -60,7 +62,10 @@ int main()
         }
 
         if (move_commands.find(input) != move_commands.end())
+        {
+            std::cout << "\033[2J\033[1;1H";
             movement.try_move(position, input);
+        }
 
         if (input == "unlock")
         {
@@ -69,6 +74,7 @@ int main()
             std::cin >> unlock_dir;
             if (move_commands.find(unlock_dir) == move_commands.end())
             {
+                std::cout << "\033[2J\033[1;1H";
                 std::cout << "Invalid direction\n";
                 continue;
             }
@@ -77,12 +83,16 @@ int main()
             std::shared_ptr<Key> key;
             if (!inventory.get_item<Key>(key))
             {
+                std::cout << "\033[2J\033[1;1H";
                 std::cout << "No key\n";
                 continue;
             }
-            inventory.use_item(key);
             
-            movement.unlock_door(position, unlock_dir);
+            std::cout << "\033[2J\033[1;1H";
+            if (movement.unlock_door(position, unlock_dir))
+            {
+                inventory.use_item(key);
+            }
         }
     }
 

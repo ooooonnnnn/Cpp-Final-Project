@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <sstream>
 
 #include "Key.h"
 
@@ -30,6 +31,17 @@ void Inventory::use_item(std::shared_ptr<Item> item)
     
     std::cout << "Using " << item->name() << "\n";
     items.erase(item);
+}
+
+std::string Inventory::toString() const
+{
+    std::stringstream ss;
+    ss << "Inventory: ";
+    for (const auto& item : items)
+    {
+        ss << item->name() << " ";
+    }
+    return ss.str();
 }
 
 template bool Inventory::get_item<Key>(std::shared_ptr<Key>&);

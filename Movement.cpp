@@ -47,18 +47,18 @@ void Movement::try_move(std::string& position, const std::string& direction)
     position = next_room;
 }
 
-void Movement::unlock_door(std::string& position, const std::string& direction)
+bool Movement::unlock_door(std::string& position, const std::string& direction)
 {
     if (!check_door_exists(position, direction))
     {
         std::cout << "No door to unlock\n";
-        return;
+        return false;
     }
 
     if (!is_door_locked(position, direction))
     {
         std::cout << "Door already unlocked\n";
-        return;
+        return false;
     }
 
     for (const auto& lock : locks.sections)
@@ -73,7 +73,9 @@ void Movement::unlock_door(std::string& position, const std::string& direction)
         {
             std::cout << "Unlocking door\n";
             locks.sections.erase(lock.first);
-            return;
+            return true;
         }
     }
+    
+    return false;
 }
