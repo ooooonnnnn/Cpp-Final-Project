@@ -22,6 +22,12 @@ bool Inventory::get_item(std::shared_ptr<T>& found_item)
     return false;
 }
 
+void Inventory::add_item(std::shared_ptr<Item> item)
+{
+    std::cout << "Adding " << item->name() << " to inventory\n";
+    items.insert(item);   
+}
+
 void Inventory::use_item(std::shared_ptr<Item> item)
 {
     if (items.find(item) == items.end())

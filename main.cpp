@@ -1,11 +1,14 @@
 #include <iostream>
 #include <unordered_map>
+
+#include "DummyItem.h"
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
 
 static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
+static auto items_path = "Config\\items.ini";
 static std::map<std::string, std::string> move_commands = {
     {"up", "exit_up"},
     {"down", "exit_down"},
@@ -33,10 +36,24 @@ void display_room_info(ConfigData map, std::string position)
     std::cout << "\n";
 }
 
+std::shared_ptr<Item> make_item(const ConfigSection& item_data)
+{
+    auto type = item_data.keys.find("type");
+    if (type == item_data.keys.end())
+        throw std::runtime_error("Item type not found");
+    
+    if (type->second == "key")
+        return std::make_shared<Key>();
+    
+    std::cout << "Unsupported item type: " << type->second << "\n";
+    return std::make_shared<DummyItem>();
+}
+
 int main()
 {
     auto map = parse_config(map_path);
     auto locks = parse_config(locked_doors_path);
+    auto items = parse_config(items_path);
 
     Movement movement(map, locks, move_commands);
     Inventory inventory;
@@ -48,9 +65,17 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        //clear console
-        display_room_info(map, position);
+        //get items from the room
+        for (auto& item_data : items.sections)
+        {
+            if (item_data.second.keys["room"] == position)
+            {
+                inventory.add_item(make_item(item_data.second));
+            }
+        }
+        //display inventory
         std::cout << inventory.toString() << "\n";
+        display_room_info(map, position);
 
         std::string input;
         std::cin >> input;
