@@ -5,12 +5,32 @@
 
 static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
-static std::unordered_map<std::string, std::string> move_commands = {
+static std::map<std::string, std::string> move_commands = {
     {"up", "exit_up"},
     {"down", "exit_down"},
     {"left", "exit_left"},
     {"right", "exit_right"}
 };
+
+void display_room_info(ConfigData map, std::string position)
+{
+    // std::cout << map.sections[position].toString();
+    auto room = map.sections[position];
+    std::cout << "Exits: ";
+    bool first = true;
+    for (auto direction : move_commands)
+    {
+        if (room.keys[direction.second] != "")
+        {
+            if (!first)
+                std::cout << ", ";
+            std::cout << direction.first << " ";
+            
+            first = false;
+        }
+    }
+    std::cout << "\n";
+}
 
 int main()
 {
@@ -26,7 +46,7 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        std::cout << map.sections[position].toString();
+        display_room_info(map, position);
 
         std::string input;
         std::cin >> input;
@@ -51,8 +71,6 @@ int main()
             }
             movement.unlock_door(position, unlock_dir);
         }
-
-        std::cout << position << "\n";
     }
 
     return 0;

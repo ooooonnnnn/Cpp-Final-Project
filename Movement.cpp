@@ -2,7 +2,7 @@
 #include <iostream>
 
 Movement::Movement(ConfigData& map, ConfigData& locks,
-                   const std::unordered_map<std::string, std::string>& move_commands)
+                   const std::map<std::string, std::string>& move_commands)
     : map(map), locks(locks), move_commands(move_commands) {}
 
 bool Movement::is_door_locked(std::string& position, const std::string& direction)

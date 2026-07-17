@@ -7,7 +7,7 @@ class Movement
 {
 public:
     Movement(ConfigData& map, ConfigData& locks,
-             const std::unordered_map<std::string, std::string>& move_commands);
+             const std::map<std::string, std::string>& move_commands);
 
     void try_move(std::string& position, const std::string& direction);
     void unlock_door(std::string& position, const std::string& direction);
@@ -16,5 +16,5 @@ public:
 
     ConfigData& map;
     ConfigData& locks;
-    const std::unordered_map<std::string, std::string>& move_commands;
+    const std::map<std::string, std::string>& move_commands;
 };
