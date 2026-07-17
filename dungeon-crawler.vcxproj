@@ -24,6 +24,9 @@
     <ClCompile Include="configtool\configtool.cpp" />
     <ClCompile Include="configtool\IniParser.cpp" />
     <ClCompile Include="configtool\stringutils.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movement.cpp" />
   </ItemGroup>
@@ -51,6 +54,9 @@
     <ClInclude Include="configtool\IConfigParser.h" />
     <ClInclude Include="configtool\IniParser.h" />
     <ClInclude Include="configtool\stringutils.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="Movement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

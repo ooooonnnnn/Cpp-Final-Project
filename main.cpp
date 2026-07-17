@@ -1,7 +1,8 @@
-#include "configtool/configtool.h"
-#include "Movement.h"
 #include <iostream>
 #include <unordered_map>
+#include "configtool/configtool.h"
+#include "Movement.h"
+#include "Inventory.h"
 
 static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
@@ -38,6 +39,7 @@ int main()
     auto locks = parse_config(locked_doors_path);
 
     Movement movement(map, locks, move_commands);
+    Inventory inventory;
 
     std::string position = "0";
 
@@ -62,6 +64,7 @@ int main()
 
         if (input == "unlock")
         {
+            //get direction of door to unlock
             std::string unlock_dir;
             std::cin >> unlock_dir;
             if (move_commands.find(unlock_dir) == move_commands.end())
@@ -69,6 +72,16 @@ int main()
                 std::cout << "Invalid direction\n";
                 continue;
             }
+            
+            //check if player has key
+            std::shared_ptr<Key> key;
+            if (!inventory.get_item<Key>(key))
+            {
+                std::cout << "No key\n";
+                continue;
+            }
+            inventory.use_item(key);
+            
             movement.unlock_door(position, unlock_dir);
         }
     }
