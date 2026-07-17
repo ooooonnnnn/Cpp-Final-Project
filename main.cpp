@@ -6,6 +6,7 @@
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
+#include "Potion.h"
 #include "Weapon.h"
 
 static auto map_path = "Config\\map.ini";
@@ -54,6 +55,15 @@ std::shared_ptr<Item> make_item(const ConfigSection& item_data)
             throw std::runtime_error("Weapon has no value field");
         int damage = std::stoi(damage_key->second);
         return std::make_shared<Weapon>(damage);
+    }
+    
+    if (type->second == "potion")
+    {
+        auto heal_key = item_data.keys.find("value");
+        if (heal_key == item_data.keys.end())
+            throw std::runtime_error("Potion has no value field");
+        int heal = std::stoi(heal_key->second);
+        return std::make_shared<Potion>(heal);       
     }
     
     std::cout << "Unsupported item type: " << type->second << "\n";
