@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include <unordered_map>
 
 #include "DummyItem.h"
@@ -66,12 +67,19 @@ int main()
     while (!exit)
     {
         //get items from the room
+        std::vector<std::string> sections_to_delete;
         for (auto& item_data : items.sections)
         {
             if (item_data.second.keys["room"] == position)
             {
+                std::cout << "Found item: " << item_data.second.keys["type"] << "\n";
                 inventory.add_item(make_item(item_data.second));
+                sections_to_delete.push_back(item_data.first);
             }
+        }
+        for (auto& section_name : sections_to_delete)
+        {
+            items.sections.erase(section_name);
         }
         //display inventory
         std::cout << inventory.toString() << "\n";
