@@ -6,6 +6,7 @@
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
+#include "Weapon.h"
 
 static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
@@ -45,6 +46,15 @@ std::shared_ptr<Item> make_item(const ConfigSection& item_data)
     
     if (type->second == "key")
         return std::make_shared<Key>();
+    
+    if (type->second == "weapon")
+    {
+        auto damage_key = item_data.keys.find("value");
+        if (damage_key == item_data.keys.end())
+            throw std::runtime_error("Weapon has no value field");
+        int damage = std::stoi(damage_key->second);
+        return std::make_shared<Weapon>(damage);
+    }
     
     std::cout << "Unsupported item type: " << type->second << "\n";
     return std::make_shared<DummyItem>();
