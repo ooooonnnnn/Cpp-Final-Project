@@ -25,6 +25,7 @@
     <ClCompile Include="configtool\IniParser.cpp" />
     <ClCompile Include="configtool\stringutils.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Movement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\map.ini" />
@@ -50,6 +51,7 @@
     <ClInclude Include="configtool\IConfigParser.h" />
     <ClInclude Include="configtool\IniParser.h" />
     <ClInclude Include="configtool\stringutils.h" />
+    <ClInclude Include="Movement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

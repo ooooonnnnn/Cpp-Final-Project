@@ -1,4 +1,5 @@
-﻿#include "configtool/configtool.h"
+#include "configtool/configtool.h"
+#include "Movement.h"
 #include <iostream>
 #include <unordered_map>
 
@@ -11,14 +12,12 @@ static std::unordered_map<std::string, std::string> move_commands = {
     {"right", "exit_right"}
 };
 
-void try_move(ConfigData& map, ConfigData& locks, std::string& position, const std::string& direction);
-
-void unlock_door(ConfigData& map, ConfigData& locks, std::string& position, const std::string& direction);
-
 int main()
 {
     auto map = parse_config(map_path);
     auto locks = parse_config(locked_doors_path);
+
+    Movement movement(map, locks, move_commands);
 
     std::string position = "0";
 
@@ -28,19 +27,19 @@ int main()
     while (!exit)
     {
         std::cout << map.sections[position].toString();
-        
+
         std::string input;
         std::cin >> input;
-        
+
         if (input == "exit")
         {
             exit = true;
             continue;
         }
-        
+
         if (move_commands.find(input) != move_commands.end())
-            try_move(map, locks, position, input);
-        
+            movement.try_move(position, input);
+
         if (input == "unlock")
         {
             std::string unlock_dir;
@@ -50,85 +49,11 @@ int main()
                 std::cout << "Invalid direction\n";
                 continue;
             }
-            unlock_door(map, locks, position, unlock_dir);
+            movement.unlock_door(position, unlock_dir);
         }
-        
+
         std::cout << position << "\n";
     }
-    
+
     return 0;
-}
-
-bool is_door_locked(ConfigData& locks, std::string& position, const std::string& direction)
-{
-    for (const auto& lock : locks.sections)
-    {
-        auto room = lock.second.keys.find("room");
-        auto lock_dir = lock.second.keys.find("direction");
-        
-        if (room == lock.second.keys.end() || lock_dir == lock.second.keys.end())
-            continue;
-        
-        if (room->second == position && lock_dir->second == direction)
-            return true;
-    }
-}
-
-bool check_door_exists(ConfigData& map, std::string& position, const std::string& direction)
-{
-    std::string next_room = map.sections[position].keys[move_commands[direction]];
-    return !next_room.empty();
-}
-
-void try_move(ConfigData& map, ConfigData& locks, std::string& position, const std::string& direction)
-{
-    std::string next_room = map.sections[position].keys[move_commands[direction]];
-    
-    //check door exists
-    if (!check_door_exists(map, position, direction))
-    {
-        std::cout << "No exit " << direction << "\n";
-        return;
-    }
-    
-    //check door not locked
-    if (is_door_locked(locks, position, direction))
-    {
-        std::cout << "Door locked\n";
-        return;
-    }
-    
-    std::cout << "Moving " << direction << "\n";
-    position = next_room;
-}
-
-void unlock_door(ConfigData& map, ConfigData& locks, std::string& position, const std::string& direction)
-{
-    if (!check_door_exists(map, position, direction))
-    {
-        std::cout << "No door to unlock\n";
-        return;
-    }
-    
-    if (!is_door_locked(locks, position, direction))
-    {
-        std::cout << "Door already unlocked\n";
-        return;
-    }
-    
-    for (const auto& lock : locks.sections)
-    {
-        auto room = lock.second.keys.find("room");
-        auto lock_dir = lock.second.keys.find("direction");
-        
-        if (room == lock.second.keys.end() || lock_dir == lock.second.keys.end())
-            continue;
-        
-        if (room->second == position && lock_dir->second == direction)
-        {
-            std::cout << "Unlocking door\n";
-            locks.sections.erase(lock.first);
-            return;
-        }
-    }
 }
