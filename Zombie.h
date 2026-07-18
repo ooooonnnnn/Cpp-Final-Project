@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Character.h"
+#include "Enemy.h"
 
-class Zombie : public Character
+class Zombie : public Enemy
 {
 public:
     Zombie();

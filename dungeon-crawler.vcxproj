@@ -27,6 +27,7 @@
     <ClCompile Include="configtool\stringutils.cpp" />
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DummyItem.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="HolyGrail.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="configtool\stringutils.h" />
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="DummyItem.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="HolyGrail.h" />
     <ClInclude Include="Inventory.h" />

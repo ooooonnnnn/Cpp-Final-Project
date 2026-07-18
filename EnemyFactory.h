@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "Character.h"
+#include "Enemy.h"
 
 class EnemyFactory
 {
 public:
-    static Character* make_enemy(std::string enemy_type);
+    static Enemy* make_enemy(std::string enemy_type);
 };

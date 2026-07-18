@@ -1,6 +1,6 @@
 ﻿#include "Dragon.h"
 
-Dragon::Dragon() : Character(30,15)
+Dragon::Dragon() : Enemy(30,15,100)
 {
 }
 

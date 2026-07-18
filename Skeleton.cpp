@@ -1,6 +1,6 @@
 ﻿#include "Skeleton.h"
 
-Skeleton::Skeleton() : Character(10,8)
+Skeleton::Skeleton() : Enemy(10,8,25)
 {
 }
 

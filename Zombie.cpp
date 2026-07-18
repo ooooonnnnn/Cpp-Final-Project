@@ -1,6 +1,6 @@
 ﻿#include "Zombie.h"
 
-Zombie::Zombie() : Character(5,5)
+Zombie::Zombie() : Enemy(5,5,10)
 {
 }
 

@@ -113,7 +113,7 @@ int main()
     player.xp_growth_power = xp_growth_power;
     
     //make enemies
-    std::map<std::string, std::vector<Character*>> map_room_enemies;
+    std::map<std::string, std::vector<Enemy*>> map_room_enemies;
     for (auto enemy_data : enemies.sections)
     {
         map_room_enemies[enemy_data.second.keys["room"]].push_back(
@@ -236,7 +236,10 @@ int main()
             auto& chosen_enemy = enemies_in_room[choice - 1];
             player.deal_damage_to(chosen_enemy);
             if (chosen_enemy->is_dead)
+            {
+                player.gain_xp(chosen_enemy->get_xp_value());
                 enemies_in_room.erase(enemies_in_room.begin() + choice - 1);
+            }
         }
         
         //one enemy attacks at random
