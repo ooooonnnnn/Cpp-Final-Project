@@ -115,9 +115,13 @@ int main()
         {
             items.sections.erase(section_name);
         }
-        //display inventory
-        std::cout << inventory.toString() << "\n";
         display_room_info(map, position);
+        std::cout << "\033[9999;1H" << "\033[5A";
+        //display player info
+        std::cout << inventory.toString() << "\n" <<
+            player.stats_to_string() << "\n";
+        //move cursor up
+        std::cout << "\033[10A";
 
         std::string input;
         std::cin >> input;
@@ -176,7 +180,6 @@ int main()
             std::cout << "\033[2J\033[1;1H";
             player.heal(found_potion->heal_amount());
             inventory.use_item(found_potion);
-            std::cout << player.stats_to_string() << "\n";
         }
     }
 
