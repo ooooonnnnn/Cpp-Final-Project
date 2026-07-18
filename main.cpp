@@ -6,12 +6,14 @@
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
+#include "Player.h"
 #include "Potion.h"
 #include "Weapon.h"
 
 static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
 static auto items_path = "Config\\items.ini";
+static auto settings_path = "Config\\settings.ini";
 static std::map<std::string, std::string> move_commands = {
     {"up", "exit_up"},
     {"down", "exit_down"},
@@ -75,9 +77,25 @@ int main()
     auto map = parse_config(map_path);
     auto locks = parse_config(locked_doors_path);
     auto items = parse_config(items_path);
+    auto settings = parse_config(settings_path);
 
     Movement movement(map, locks, move_commands);
     Inventory inventory;
+    auto player_settings = settings.sections.find("player");
+    float health, defense, attack;
+    if (player_settings == settings.sections.end())
+    {
+        throw std::runtime_error("No player settings found");
+    }
+    health = std::stof(player_settings->second.keys["health"]);
+    defense = std::stof(player_settings->second.keys["defense"]);
+    attack = std::stof(player_settings->second.keys["attack"]);
+    Player player(health, attack, defense);
+    
+    std::cout << player.stats_to_string() << "\n";
+    player.take_damage(1.5);
+    std::cout << player.stats_to_string() << "\n";
+    return 0;
 
     std::string position = "0";
 

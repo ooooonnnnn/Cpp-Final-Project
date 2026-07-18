@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="configtool\ConfigData.cpp" />
     <ClCompile Include="configtool\ConfigSection.cpp" />
     <ClCompile Include="configtool\configtool.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -37,6 +39,7 @@
     <Content Include="Config\items.ini" />
     <Content Include="Config\locked-doors.ini" />
     <Content Include="Config\map.ini" />
+    <Content Include="Config\settings.ini" />
     <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.exe.recipe" />
     <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.ilk" />
     <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.tlog\CL.command.1.tlog" />
@@ -53,6 +56,7 @@
     <Content Include="dungeon-crawler\x64\Debug\vc145.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="configtool\ConfigData.h" />
     <ClInclude Include="configtool\ConfigSection.h" />
     <ClInclude Include="configtool\configtool.h" />
@@ -64,6 +68,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="Movement.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Potion.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
