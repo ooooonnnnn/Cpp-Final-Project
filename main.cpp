@@ -91,12 +91,8 @@ int main()
     defense = std::stof(player_settings->second.keys["defense"]);
     attack = std::stof(player_settings->second.keys["attack"]);
     Player player(health, attack, defense);
+    player.take_damage(5);
     
-    std::cout << player.stats_to_string() << "\n";
-    player.take_damage(1.5);
-    std::cout << player.stats_to_string() << "\n";
-    return 0;
-
     std::string position = "0";
 
     //game loop
@@ -164,6 +160,23 @@ int main()
             {
                 inventory.use_item(key);
             }
+        }
+        
+        if (input == "heal")
+        {
+            //check if player has potion
+            std::shared_ptr<Potion> found_potion;
+            if (!inventory.get_item<Potion>(found_potion))
+            {
+                std::cout << "\033[2J\033[1;1H";
+                std::cout << "No potion\n";
+                continue;
+            }
+            
+            std::cout << "\033[2J\033[1;1H";
+            player.heal(found_potion->heal_amount());
+            inventory.use_item(found_potion);
+            std::cout << player.stats_to_string() << "\n";
         }
     }
 

@@ -9,3 +9,8 @@ std::string Potion::name()
 {
     return "Potion_" + std::to_string(heal);
 }
+
+float Potion::heal_amount() const
+{
+    return heal;
+}

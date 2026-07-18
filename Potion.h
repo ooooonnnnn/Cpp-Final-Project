@@ -7,4 +7,5 @@ class Potion : public Item
 public:
     Potion(int heal);
     std::string name() override;
+    float heal_amount() const;
 };

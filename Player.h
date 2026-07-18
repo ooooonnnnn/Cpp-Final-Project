@@ -9,5 +9,7 @@ class Player : public Character
 public:
     Player(float health, float attack, float defense);
     void take_damage(float base_damage) override;
+    void heal(float amount); 
+    
     std::string stats_to_string() const override;
 };

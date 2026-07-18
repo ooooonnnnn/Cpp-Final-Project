@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "Key.h"
+#include "Potion.h"
 
 template <typename T>
 bool Inventory::get_item(std::shared_ptr<T>& found_item)
@@ -51,3 +52,4 @@ std::string Inventory::toString() const
 }
 
 template bool Inventory::get_item<Key>(std::shared_ptr<Key>&);
+template bool Inventory::get_item<Potion>(std::shared_ptr<Potion>&);
