@@ -34,6 +34,8 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\items.ini" />
+    <Content Include="Config\locked-doors.ini" />
     <Content Include="Config\map.ini" />
     <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.exe.recipe" />
     <Content Include="dungeon-crawler\x64\Debug\dungeon-crawler.ilk" />
