@@ -81,6 +81,7 @@ int main()
     
     Movement movement(map, locks, move_commands);
     Inventory inventory;
+    
     auto player_settings = settings.sections.find("player");
     float health, defense, attack;
     if (player_settings == settings.sections.end())
@@ -90,10 +91,18 @@ int main()
     health = std::stof(player_settings->second.keys["health"]);
     defense = std::stof(player_settings->second.keys["defense"]);
     attack = std::stof(player_settings->second.keys["attack"]);
+    auto xp_settings = settings.sections.find("experience");
+    float base_xp, xp_growth_power;
+    if (xp_settings == settings.sections.end())
+    {
+        throw std::runtime_error("No experience settings found");
+    }
+    base_xp = std::stof(xp_settings->second.keys["base"]);
+    xp_growth_power = std::stof(xp_settings->second.keys["growth"]);
+    
     Player player(health, attack, defense);
-    player.xp_for_first_lvl = 10;
-    player.xp_growth_power = 0.1f;
-    player.take_damage(5);
+    player.xp_for_first_lvl = base_xp;
+    player.xp_growth_power = xp_growth_power;
     
     std::string position = "0";
 
@@ -126,8 +135,6 @@ int main()
         //move cursor up
         std::cout << "\033[10A";
 
-        player.gain_xp(1);
-        
         std::string input;
         std::cin >> input;
 
