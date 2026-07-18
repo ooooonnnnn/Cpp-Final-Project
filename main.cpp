@@ -5,6 +5,7 @@
 
 #include "DummyItem.h"
 #include "EnemyFactory.h"
+#include "HolyGrail.h"
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
@@ -71,6 +72,9 @@ std::shared_ptr<Item> make_item(const ConfigSection& item_data)
         return std::make_shared<Potion>(heal);       
     }
     
+    if (type->second == "grail")
+        return std::make_shared<HolyGrail>();       
+    
     std::cout << "Unsupported item type: " << type->second << "\n";
     return std::make_shared<DummyItem>();
 }
@@ -127,7 +131,7 @@ int main()
         if (player.is_dead)
         {
             std::cout << "\033[2J\033[1;1H";
-            std::cout << "You died\nPress any key to exit";
+            std::cout << "You died\nPress enter to exit";
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin.get();
             exit = true;
@@ -244,6 +248,7 @@ int main()
             }
         }
 
+        //unlocking doors
         if (enemies_in_room.empty() && input == "unlock")
         {
             //get direction of door to unlock
@@ -288,6 +293,25 @@ int main()
             player.heal(found_potion->heal_amount());
             inventory.use_item(found_potion);
             continue;
+        }
+        
+        if (input == "drink")
+        {
+            std::shared_ptr<HolyGrail> found_grail;
+            if (!inventory.get_item<HolyGrail>(found_grail))
+            {
+                std::cout << "\033[2J\033[1;1H";
+                std::cout << "No holy grail\n";
+                continue;
+            }
+            
+            std::cout << "\033[2J\033[1;1H";
+            inventory.use_item(found_grail);
+            std::cout << "You drank from the holy grail! You win!\nPress enter to exit";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.get();
+            exit = true;
+            continue;    
         }
         
         std::cout << "\033[2J\033[1;1H";

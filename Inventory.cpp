@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <sstream>
 
+#include "HolyGrail.h"
 #include "Key.h"
 #include "Potion.h"
 
@@ -53,3 +54,4 @@ std::string Inventory::toString() const
 
 template bool Inventory::get_item<Key>(std::shared_ptr<Key>&);
 template bool Inventory::get_item<Potion>(std::shared_ptr<Potion>&);
+template bool Inventory::get_item<HolyGrail>(std::shared_ptr<HolyGrail>&);

@@ -28,6 +28,7 @@
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DummyItem.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="HolyGrail.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="DummyItem.h" />
     <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="HolyGrail.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Key.h" />
