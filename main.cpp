@@ -1,8 +1,10 @@
 #include <iostream>
 #include <queue>
+#include <random>
 #include <unordered_map>
 
 #include "DummyItem.h"
+#include "EnemyFactory.h"
 #include "configtool/configtool.h"
 #include "Movement.h"
 #include "Inventory.h"
@@ -14,6 +16,7 @@ static auto map_path = "Config\\map.ini";
 static auto locked_doors_path = "Config\\locked-doors.ini";
 static auto items_path = "Config\\items.ini";
 static auto settings_path = "Config\\settings.ini";
+static auto enemies_path = "Config\\enemies.ini";
 static std::map<std::string, std::string> move_commands = {
     {"up", "exit_up"},
     {"down", "exit_down"},
@@ -78,6 +81,7 @@ int main()
     auto locks = parse_config(locked_doors_path);
     auto items = parse_config(items_path);
     auto settings = parse_config(settings_path);
+    auto enemies = parse_config(enemies_path);
     
     Movement movement(map, locks, move_commands);
     Inventory inventory;
@@ -104,6 +108,14 @@ int main()
     player.xp_for_first_lvl = base_xp;
     player.xp_growth_power = xp_growth_power;
     
+    //make enemies
+    std::map<std::string, std::vector<Character*>> map_room_enemies;
+    for (auto enemy_data : enemies.sections)
+    {
+        map_room_enemies[enemy_data.second.keys["room"]].push_back(
+            EnemyFactory::make_enemy(enemy_data.second.keys["type"]));
+    }
+    
     std::string position = "0";
 
     //game loop
@@ -111,22 +123,48 @@ int main()
     bool exit = false;
     while (!exit)
     {
-        //get items from the room
-        std::vector<std::string> sections_to_delete;
-        for (auto& item_data : items.sections)
+        //check player alive
+        if (player.is_dead)
         {
-            if (item_data.second.keys["room"] == position)
+            std::cout << "\033[2J\033[1;1H";
+            std::cout << "You died\nPress any key to exit";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.get();
+            exit = true;
+            continue;       
+        }
+        
+        
+        //get enemies in the room
+        auto& enemies_in_room = map_room_enemies[position];
+        if (!enemies_in_room.empty())
+        {
+            //display enemies
+            for (auto& enemy : enemies_in_room) 
             {
-                std::cout << "Found item: " << item_data.second.keys["type"] << "\n";
-                inventory.add_item(make_item(item_data.second));
-                sections_to_delete.push_back(item_data.first);
+                std::cout << enemy->stats_to_string() << "\n\n";
             }
         }
-        for (auto& section_name : sections_to_delete)
+        
+        if (enemies_in_room.empty())
         {
-            items.sections.erase(section_name);
+            //get items from the room
+            std::vector<std::string> sections_to_delete;
+            for (auto& item_data : items.sections)
+            {
+                if (item_data.second.keys["room"] == position)
+                {
+                    std::cout << "Found item: " << item_data.second.keys["type"] << "\n";
+                    inventory.add_item(make_item(item_data.second));
+                    sections_to_delete.push_back(item_data.first);
+                }
+            }
+            for (auto& section_name : sections_to_delete)
+            {
+                items.sections.erase(section_name);
+            }
+            display_room_info(map, position);
         }
-        display_room_info(map, position);
         std::cout << "\033[9999;1H" << "\033[5A";
         //display player info
         std::cout << inventory.toString() << "\n" <<
@@ -134,7 +172,14 @@ int main()
                 player.xp_to_string() << "\n";
         //move cursor up
         std::cout << "\033[10A";
+        
+        //attack prompt
+        if (!enemies_in_room.empty())
+        {
+            std::cout << "Choose enemy to attack: 1 - " << enemies_in_room.size() << "\n";
+        } 
 
+        //get player input
         std::string input;
         std::cin >> input;
 
@@ -143,15 +188,63 @@ int main()
             exit = true;
             continue;
         }
-
-        if (move_commands.find(input) != move_commands.end())
+        
+        if (!enemies_in_room.empty())
         {
-            std::cout << "\033[2J\033[1;1H";
-            movement.try_move(position, input);
-            continue;
+            size_t choice;
+            bool valid_choice = true;
+            try
+            {
+                choice = std::stoi(input);
+            }
+            catch (...)
+            {
+                valid_choice = false;
+            }
+            
+            if (valid_choice)
+            {
+                if (choice < 1 || choice > enemies_in_room.size())
+                {
+                    valid_choice = false;
+                }
+            }
+            
+            if (!valid_choice)
+            {
+                std::cout << "\033[2J\033[1;1H";
+                std::cout << "Invalid choice\n";
+                continue;
+            }
+            
+            auto& chosen_enemy = enemies_in_room[choice - 1];
+            player.deal_damage_to(chosen_enemy);
+            if (chosen_enemy->is_dead)
+                enemies_in_room.erase(enemies_in_room.begin() + choice - 1);
+        }
+        
+        //one enemy attacks at random
+        if (!enemies_in_room.empty())
+        {
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<size_t> distrib(0, enemies_in_room.size() - 1);
+            auto& attacker = enemies_in_room[distrib(gen)];
+            
+            attacker->deal_damage_to(&player);
+        }
+        
+        if (enemies_in_room.empty())
+        {
+            if (move_commands.find(input) != move_commands.end())
+            {
+                std::cout << "\033[2J\033[1;1H";
+                movement.try_move(position, input);
+                continue;
+            }
         }
 
-        if (input == "unlock")
+        if (enemies_in_room.empty() && input == "unlock")
         {
             //get direction of door to unlock
             std::string unlock_dir;

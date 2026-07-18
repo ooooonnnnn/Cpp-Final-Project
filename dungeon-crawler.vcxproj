@@ -25,7 +25,9 @@
     <ClCompile Include="configtool\configtool.cpp" />
     <ClCompile Include="configtool\IniParser.cpp" />
     <ClCompile Include="configtool\stringutils.cpp" />
+    <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DummyItem.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -33,9 +35,12 @@
     <ClCompile Include="Movement.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\enemies.ini" />
     <Content Include="Config\items.ini" />
     <Content Include="Config\locked-doors.ini" />
     <Content Include="Config\map.ini" />
@@ -63,14 +68,18 @@
     <ClInclude Include="configtool\IConfigParser.h" />
     <ClInclude Include="configtool\IniParser.h" />
     <ClInclude Include="configtool\stringutils.h" />
+    <ClInclude Include="Dragon.h" />
     <ClInclude Include="DummyItem.h" />
+    <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="Movement.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

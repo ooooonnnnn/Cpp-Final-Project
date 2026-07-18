@@ -1,5 +1,7 @@
 ﻿#include "Character.h"
 
+#include <iomanip>
+
 Character::Character(float health, float attack) : health(health), attack(attack)
 {
 }
@@ -19,4 +21,13 @@ void Character::deal_damage_to(Character* target) const
 void Character::die()
 {
     is_dead = true;
+}
+
+std::string Character::stats_to_string() const
+{
+    std::stringstream ss;
+    ss << "Health: " << std::fixed << std::setprecision(0) << health - damage_taken <<
+        "/" << std::fixed << std::setprecision(0) << health << "\t" <<
+            "Attack: " << std::fixed << std::setprecision(0) << attack;
+    return ss.str();   
 }

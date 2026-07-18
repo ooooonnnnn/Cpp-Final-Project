@@ -4,7 +4,9 @@ C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\ConfigSection.cpp;C
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\configtool.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\configtool.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\IniParser.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\IniParser.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\configtool\stringutils.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\stringutils.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\Dragon.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Dragon.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\DummyItem.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\DummyItem.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\EnemyFactory.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\EnemyFactory.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Inventory.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Inventory.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Item.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Item.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Key.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Key.obj
@@ -12,4 +14,6 @@ C:\Users\omrit\Documents\GitHub\Cpp Final Project\main.cpp;C:\Users\omrit\Docume
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Movement.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Movement.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Player.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Player.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Potion.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Potion.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\Skeleton.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Skeleton.obj
 C:\Users\omrit\Documents\GitHub\Cpp Final Project\Weapon.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Weapon.obj
+C:\Users\omrit\Documents\GitHub\Cpp Final Project\Zombie.cpp;C:\Users\omrit\Documents\GitHub\Cpp Final Project\dungeon-crawler\x64\Debug\Zombie.obj
