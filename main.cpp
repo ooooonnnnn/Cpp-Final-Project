@@ -172,6 +172,7 @@ int main()
                 {
                     std::cout << "Found item: " << item_data.second.keys["type"] << "\n";
                     inventory.add_item(make_item(item_data.second));
+                    player.update_stats(&inventory);
                     sections_to_delete.push_back(item_data.first);
                 }
             }

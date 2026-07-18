@@ -13,7 +13,7 @@ public:
     virtual ~Character() = default;
     Character(float health, float attack);
     virtual void take_damage(float base_damage);
-    void deal_damage_to(Character* target) const;
+    virtual void deal_damage_to(Character* target) const;
     void die();
     virtual std::string stats_to_string() const;
 };

@@ -7,6 +7,7 @@
 #include "HolyGrail.h"
 #include "Key.h"
 #include "Potion.h"
+#include "Weapon.h"
 
 template <typename T>
 bool Inventory::get_item(std::shared_ptr<T>& found_item)
@@ -23,6 +24,25 @@ bool Inventory::get_item(std::shared_ptr<T>& found_item)
 
     return false;
 }
+
+template <typename T>
+std::set<std::shared_ptr<T>> Inventory::get_items() const
+{
+    std::set<std::shared_ptr<T>> found_items;
+    
+    for (auto& item : items)
+    {
+        auto cast_item = std::dynamic_pointer_cast<T>(item);
+        if (cast_item != nullptr)
+        {
+            found_items.insert(cast_item);
+        }
+    }
+    
+    return found_items;
+}
+
+template std::set<std::shared_ptr<Weapon>> Inventory::get_items() const;
 
 void Inventory::add_item(std::shared_ptr<Item> item)
 {

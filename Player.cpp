@@ -3,15 +3,24 @@
 #include <iomanip>
 #include <cmath>
 
+#include "Weapon.h"
+
 Player::Player(float health, float attack, float defense) : Character(health, attack), defense(defense)
 {
     level = 0;
     xp = 0;
+    modified_attack = attack;
+    modified_defense = defense;
 }
 
 void Player::take_damage(float base_damage)
 {
-    Character::take_damage(base_damage / defense);
+    Character::take_damage(base_damage / modified_defense);
+}
+
+void Player::deal_damage_to(Character* target) const
+{
+    target->take_damage(modified_attack);
 }
 
 void Player::heal(float amount)
@@ -32,7 +41,32 @@ void Player::gain_xp(float amount)
     {
         xp -= xp_for_next_lvl();
         level++;
+        update_stats(nullptr);
     }   
+}
+
+void Player::update_stats(Inventory* inventory)
+{
+    //update by the level
+    float factor = 1.5;
+    modified_defense = defense * static_cast<float>(pow(factor, level));
+    modified_attack = attack * static_cast<float>(pow(factor, level));
+    
+    if (inventory == nullptr)
+    {
+        inventory = this->inventory;
+    }
+    
+    if (inventory == nullptr)
+        return;
+    
+    this->inventory = inventory;
+    
+    auto weapons = inventory->get_items<Weapon>();
+    for (auto& weapon : weapons)
+    {
+        modified_attack += weapon->get_damage();
+    }
 }
 
 std::string Player::stats_to_string() const
@@ -41,8 +75,8 @@ std::string Player::stats_to_string() const
     ss << 
         "Health: " << std::fixed << std::setprecision(1) << health - damage_taken << "/" << 
             std::fixed << std::setprecision(1) << health << "\t" <<
-        "Defense: " << std::fixed << std::setprecision(1) << defense << "\t" <<
-            "Attack: " << std::fixed << std::setprecision(1) << attack;
+        "Defense: " << std::fixed << std::setprecision(1) << modified_defense << "\t" <<
+            "Attack: " << std::fixed << std::setprecision(1) << modified_attack;
     return ss.str();
 }
 
