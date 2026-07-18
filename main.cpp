@@ -121,9 +121,21 @@ int main()
     }
     
     std::string position = "0";
+    
+    //show controls
+    std::cout << "Welcome to Pointer-Crawler!\n" << "Your quest is to find the holy grail and drink from it.\n" <<
+        "\nControls:\n\n" << "- Movement: use \"up\", \"down\", \"left\" or \"right\"\n" <<
+        "- Unlocking doors: use \"unlock\" + direction if you have a key\n" <<
+        "- Healing: use \"heal\" if you have a potion\n" <<
+        "- Drinking: use \"drink\" if you have the holy grail, to win the game!\n" <<
+        "- Combat: choose which enemy to attack by entering a number (range will be shown)\n" <<
+        "- Quitting: use \"exit\" at any time to quit\n\n" <<
+            "Hit enter to start! Good luck!";
+    // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
+    std::cout << "\033[2J\033[1;1H";
 
     //game loop
-    std::cout << "\"exit\" to quit\n";
     bool exit = false;
     while (!exit)
     {
