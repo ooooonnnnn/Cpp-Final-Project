@@ -78,7 +78,7 @@ int main()
     auto locks = parse_config(locked_doors_path);
     auto items = parse_config(items_path);
     auto settings = parse_config(settings_path);
-
+    
     Movement movement(map, locks, move_commands);
     Inventory inventory;
     auto player_settings = settings.sections.find("player");
@@ -91,6 +91,8 @@ int main()
     defense = std::stof(player_settings->second.keys["defense"]);
     attack = std::stof(player_settings->second.keys["attack"]);
     Player player(health, attack, defense);
+    player.xp_for_first_lvl = 10;
+    player.xp_growth_power = 0.1f;
     player.take_damage(5);
     
     std::string position = "0";
@@ -119,10 +121,13 @@ int main()
         std::cout << "\033[9999;1H" << "\033[5A";
         //display player info
         std::cout << inventory.toString() << "\n" <<
-            player.stats_to_string() << "\n";
+            player.stats_to_string() << "\n" <<
+                player.xp_to_string() << "\n";
         //move cursor up
         std::cout << "\033[10A";
 
+        player.gain_xp(1);
+        
         std::string input;
         std::cin >> input;
 
@@ -136,6 +141,7 @@ int main()
         {
             std::cout << "\033[2J\033[1;1H";
             movement.try_move(position, input);
+            continue;
         }
 
         if (input == "unlock")
@@ -164,6 +170,7 @@ int main()
             {
                 inventory.use_item(key);
             }
+            continue;
         }
         
         if (input == "heal")
@@ -180,7 +187,10 @@ int main()
             std::cout << "\033[2J\033[1;1H";
             player.heal(found_potion->heal_amount());
             inventory.use_item(found_potion);
+            continue;
         }
+        
+        std::cout << "\033[2J\033[1;1H";
     }
 
     return 0;
